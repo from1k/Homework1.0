@@ -147,23 +147,18 @@ find ~/boost_1_69_0 -type f -name "any.hpp"
 grep -rl "boost::asio" ~/boost_1_69_0
 ```
 
+*Для удобства можно добавить:*
+
+```bash 
+grep -rl "boost::asio" ~/boost_1_69_0 | less
+```
+
 *Можно перенаправить вывод и записать данный результат в файл:*
 
 ```bash 
 grep -rl "boost::asio" ~/boost_1_69_0 > asio_files.txt
 ```
 
-*Пояснение: ">" используется для перенаправления. Результат команды ```grep``` записывается в файл asio_files.txt*
-
-**Вывод в терминале:**
-
-  ```bash
-find ~/boost_1_69_0 -type f \( -name "*.hpp" -o -name "*.h" \) | wc -l
-15208
-find ~/boost_1_69_0 -type f -name "*.cpp" | wc -l
-13774
-from1k@from1k-VirtualBox:~$ find ~/boost_1_69_0 -type f ! -name "*.hpp" ! -name "*.h" ! -name "*.cpp" | wc -l
-32209
-  ```
+*Пояснение: ">" используется для перенаправления. Результат команды ```grep``` записывается в файл [asio_files.txt](/asio_files.txt)*
 
 </details>
