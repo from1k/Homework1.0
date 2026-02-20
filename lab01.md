@@ -58,7 +58,7 @@ mkdir -p ~/boost_1_69_0
 tar -xzvf boost_1_69_0.tar.gz -C ~/
 ``` 
 
-*Пояснение: создаем новую директорию под названием "boost_1_69_0" и извлекаем файлы из архива в неё.*
+*Примечание: создаем новую директорию под названием "boost_1_69_0" и извлекаем файлы из архива в неё.*
 
 ### Задание 3. Подсчитайте количество файлов в директории ~/boost_1_69_0 не включая вложенные директории. 
 
@@ -67,7 +67,7 @@ tar -xzvf boost_1_69_0.tar.gz -C ~/
 ```bash 
 find ~/boost_1_69_0 -maxdepth 1 -type f | wc -l
 ``` 
-*Пояснение: в команде используется pipe "|", который предназначен для группировки команд и передачи вывода одной команды на вход другой.*
+*Примечание: в команде используется pipe "|", который предназначен для группировки команд и передачи вывода одной команды на вход другой.*
 
 **Вывод в терминале:**
 
@@ -83,7 +83,7 @@ find ~/boost_1_69_0 -maxdepth 1 -type f | wc -l
 ```bash 
 find ~/boost_1_69_0 -type f | wc -l
 ``` 
-*Пояснение: в команде используется pipe "|", который предназначен для группировки команд и передачи вывода одной команды на вход другой.*
+*Примечание: в команде используется pipe "|", который предназначен для группировки команд и передачи вывода одной команды на вход другой.*
 
 **Вывод в терминале:**
 
@@ -101,7 +101,7 @@ find ~/boost_1_69_0 -type f \( -name "*.hpp" -o -name "*.h" \) | wc -l
 find ~/boost_1_69_0 -type f -name "*.cpp" | wc -l
 find ~/boost_1_69_0 -type f ! -name "*.hpp" ! -name "*.h" ! -name "*.cpp" | wc -l
 ``` 
-*Пояснение: \(...\) используется так, чтобы скобки объединяли условия, необходимо "экранировать" скобки. Знак "!" используется как стандартное отрицание (инверсия) условия.*
+*Примечание: \(...\) используется так, чтобы скобки объединяли условия, необходимо "экранировать" скобки. Знак "!" используется как стандартное отрицание (инверсия) условия.*
 
 **Вывод в терминале:**
 
@@ -159,30 +159,96 @@ grep -rl "boost::asio" ~/boost_1_69_0 | less
 grep -rl "boost::asio" ~/boost_1_69_0 > asio_files.txt
 ```
 
-*Пояснение: ">" используется для перенаправления. Результат команды ```grep``` записывается в файл [asio_files.txt](/asio_files.txt)*
+*Примечание: ">" используется для перенаправления. Результат команды ```grep``` записывается в файл [asio_files.txt](/asio_files.txt)*
 
 ### Задание 8. Скомпилирутйе boost (можно воспользоваться инструкцией [по ссылке](https://codeyarns.com/tech/2017-01-24-how-to-build-boost-on-linux.html).
 
 **Решение в терминале:** 
 
-*Если нужно конкретно вывести все файлы в консоль:*
-
 ```bash 
-grep -rl "boost::asio" ~/boost_1_69_0
+cd ~/boost_1_69_0
+~/boost_1_69_0$ ./bootstrap.sh
+./b2
 ```
 
-*Для удобства можно добавить:*
+*Примечание: если на стадии ```~/boost_1_69_0$ ./bootstrap.sh``` терминал выдает ошибку, тогда необходимо проверить наличие компилятора C++ (g++) и дркгих зависимостей*
+
+### Задание 9. Перенесите все скомпилированные на предыдущем шаге статические библиотеки в директорию ~/boost-libs.
+
+**Решение в терминале:** 
 
 ```bash 
-grep -rl "boost::asio" ~/boost_1_69_0 | less
-```
+mkdir -p ~/boost-libs
+find ~/boost_1_69_0 -type f -name "*.a" -exec mv {} ~/boost-libs \;
+``` 
 
-*Можно перенаправить вывод и записать данный результат в файл:*
+### Задание 10.	Подсчитайте сколько занимает дискового пространства каждый файл в новой директории.
+
+**Решение в терминале:** 
 
 ```bash 
-grep -rl "boost::asio" ~/boost_1_69_0 > asio_files.txt
+du -h ~/boost-libs/*
 ```
 
-*Пояснение: ">" используется для перенаправления. Результат команды ```grep``` записывается в файл [asio_files.txt](/asio_files.txt)*
+**Вывод в терминале:**
+
+  ```bash
+4.0K /home/from1k/boost-libs/libboost_atomic.a
+236K /home/from1k/boost-libs/libboost_chrono.a
+148K /home/from1k/boost-libs/libboost_container.a
+24K /home/from1k/boost-libs/libboost_context.a
+332K /home/from1k/boost-libs/libboost_contract.a
+152K /home/from1k/boost-libs/libboost_date_time.a
+4.0K /home/from1k/boost-libs/libboost_exception.a
+232K /home/from1k/boost-libs/libboost_fiber.a
+416K /home/from1k/boost-libs/libboost_filesystem.a
+848K /home/from1k/boost-libs/libboost_graph.a
+172K /home/from1k/boost-libs/libboost_iostreams.a
+2.0M /home/from1k/boost-libs/libboost_locale.a
+544K /home/from1k/boost-libs/libboost_math_c99.a
+448K /home/from1k/boost-libs/libboost_math_c99f.a
+464K /home/from1k/boost-libs/libboost_math_c99l.a
+2.7M /home/from1k/boost-libs/libboost_math_tr1.a
+2.6M /home/from1k/boost-libs/libboost_math_tr1f.a
+2.7M /home/from1k/boost-libs/libboost_math_tr1l.a
+212K /home/from1k/boost-libs/libboost_prg_exec_monitor.a
+1.6M /home/from1k/boost-libs/libboost_program_options.a
+80K /home/from1k/boost-libs/libboost_random.a
+2.7M /home/from1k/boost-libs/libboost_regex.a
+1.2M /home/from1k/boost-libs/libboost_serialization.a
+24K /home/from1k/boost-libs/libboost_stacktrace_addr2line.a
+20K /home/from1k/boost-libs/libboost_stacktrace_backtrace.a
+16K /home/from1k/boost-libs/libboost_stacktrace_basic.a
+4.0K /home/from1k/boost-libs/libboost_stacktrace_noop.a
+4.0K /home/from1k/boost-libs/libboost_system.a
+2.3M /home/from1k/boost-libs/libboost_test_exec_monitor.a
+56K /home/from1k/boost-libs/libboost_timer.a
+2.3M /home/from1k/boost-libs/libboost_unit_test_framework.a
+4.5M /home/from1k/boost-libs/libboost_wave.a
+796K /home/from1k/boost-libs/libboost_wserialization.a
+  ```
+
+### Задание 11.	Найдите 10 самых "тяжелых" файлов в новой директории.
+
+**Решение в терминале:** 
+
+```bash 
+du -h ~/boost-libs/* | sort -hr | head -n 10
+```
+
+**Вывод в терминале:**
+
+  ```bash
+4.5M /home/from1k/boost-libs/libboost_wave.a
+2.7M /home/from1k/boost-libs/libboost_regex.a
+2.7M /home/from1k/boost-libs/libboost_math_tr1l.a
+2.7M /home/from1k/boost-libs/libboost_math_tr1.a
+2.6M /home/from1k/boost-libs/libboost_math_tr1f.a
+2.3M /home/from1k/boost-libs/libboost_unit_test_framework.a
+2.3M /home/from1k/boost-libs/libboost_test_exec_monitor.a
+2.0M /home/from1k/boost-libs/libboost_locale.a
+1.6M /home/from1k/boost-libs/libboost_program_options.a
+1.2M /home/from1k/boost-libs/libboost_serialization.a
+  ```
 
 </details>
