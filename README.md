@@ -186,7 +186,7 @@ $ grep -rl "boost::asio" ~/boost_1_69_0 | less
 $ grep -rl "boost::asio" ~/boost_1_69_0 > asio_files.txt
 ```
 
-*Примечание: ">" используется для перенаправления. Результат команды ```grep``` записывается в файл [asio_files.txt]([/asio_files.txt](https://raw.githubusercontent.com/from1k/Homework1.0/refs/heads/main/asio_files.txt))*
+*Примечание: ">" используется для перенаправления. Результат команды ```grep``` записывается в файл [asio_files.txt]([[/asio_files.txt](https://raw.githubusercontent.com/from1k/Homework1.0/refs/heads/main/asio_files.txt)](https://gist.githubusercontent.com/from1k/304d66b6427a6c91608e6ebb1ba00f76/raw/bba3d744baab38cfd0179625f29e1a695ccc508b/asio_files.txt))*
 
 ### Задание 8. Скомпилирутйе boost (можно воспользоваться инструкцией [по ссылке](https://codeyarns.com/tech/2017-01-24-how-to-build-boost-on-linux.html).
 
