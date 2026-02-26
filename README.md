@@ -43,15 +43,37 @@
 **Решение в терминале:** 
 
 ```bash 
-wget -O boost_1_69_0.tar.gz https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz
+$ wget -O boost_1_69_0.tar.gz https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz
 ``` 
 
 **Вывод в терминале:**
 
   ```bash
-boost_1_69_0.tar.gz      100%[===============================>] 106.53M  6.06MB/s    in 76s     
+Resolving sourceforge.net (sourceforge.net)... 104.18.12.149, 104.18.13.149, 2606:4700::6812:c95, ...
+Connecting to sourceforge.net (sourceforge.net)|104.18.12.149|:443... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz/ [following]
+--2026-02-26 18:49:34--  https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz/
+Reusing existing connection to sourceforge.net:443.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz/download [following]
+--2026-02-26 18:49:34--  https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz/download
+Reusing existing connection to sourceforge.net:443.
+HTTP request sent, awaiting response... 302 Found
+Location: https://downloads.sourceforge.net/project/boost/boost/1.69.0/boost_1_69_0.tar.gz?ts=gAAAAABpoGuPxWHIALKG4S8yHCNMVZfDlZpA_CAzapLvQKD5iXMRgPWrMxst_XvqqdhSQ1KmO8WTmHMm9xWNE05OBl32gbHk3Q%3D%3D&use_mirror=altushost-swe&r= [following]
+--2026-02-26 18:49:35--  https://downloads.sourceforge.net/project/boost/boost/1.69.0/boost_1_69_0.tar.gz?ts=gAAAAABpoGuPxWHIALKG4S8yHCNMVZfDlZpA_CAzapLvQKD5iXMRgPWrMxst_XvqqdhSQ1KmO8WTmHMm9xWNE05OBl32gbHk3Q%3D%3D&use_mirror=altushost-swe&r=
+Resolving downloads.sourceforge.net (downloads.sourceforge.net)... 104.18.13.149, 104.18.12.149, 2606:4700::6812:c95, ...
+Connecting to downloads.sourceforge.net (downloads.sourceforge.net)|104.18.13.149|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://altushost-swe.dl.sourceforge.net/project/boost/boost/1.69.0/boost_1_69_0.tar.gz?viasf=1 [following]
+--2026-02-26 18:49:35--  https://altushost-swe.dl.sourceforge.net/project/boost/boost/1.69.0/boost_1_69_0.tar.gz?viasf=1 
+Resolving altushost-swe.dl.sourceforge.net (altushost-swe.dl.sourceforge.net)... 79.142.76.130
+Connecting to altushost-swe.dl.sourceforge.net (altushost-swe.dl.sourceforge.net)|79.142.76.130|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 111710205 (107M) [application/x-gzip]
+Saving to: ‘boost_1_69_0.tar.gz’
 
-2026-02-20 16:05:31 (1.40 MB/s) - ‘boost_1_69_0.tar.gz’ saved [111710205/111710205]
+2026-02-26 18:49:51 (7.10 MB/s) - ‘boost_1_69_0.tar.gz’ saved [111710205/111710205]
   ```
 
 ### Задание 2. Разархивируйте скаченный файл в директорию ~/boost_1_69_0. 
@@ -59,8 +81,8 @@ boost_1_69_0.tar.gz      100%[===============================>] 106.53M  6.06MB/
 **Решение в терминале:** 
 
 ```bash 
-mkdir -p ~/boost_1_69_0
-tar -xzvf boost_1_69_0.tar.gz -C ~/
+$ mkdir -p ~/boost_1_69_0
+$ tar -xzvf boost_1_69_0.tar.gz -C ~/
 ``` 
 
 *Примечание: создаем новую директорию под названием "boost_1_69_0" и извлекаем файлы из архива в неё.*
@@ -70,14 +92,14 @@ tar -xzvf boost_1_69_0.tar.gz -C ~/
 **Решение в терминале:** 
 
 ```bash 
-find ~/boost_1_69_0 -maxdepth 1 -type f | wc -l
+$ find ~/boost_1_69_0 -maxdepth 1 -type f | wc -l
 ``` 
 *Примечание: в команде используется pipe "|", который предназначен для группировки команд и передачи вывода одной команды на вход другой.*
 
 **Вывод в терминале:**
 
   ```bash
-find ~/boost_1_69_0 -maxdepth 1 -type f | wc -l 
+$ find ~/boost_1_69_0 -maxdepth 1 -type f | wc -l 
 12
   ```
 
@@ -86,14 +108,14 @@ find ~/boost_1_69_0 -maxdepth 1 -type f | wc -l
 **Решение в терминале:** 
 
 ```bash 
-find ~/boost_1_69_0 -type f | wc -l
+$ find ~/boost_1_69_0 -type f | wc -l
 ``` 
 *Примечание: в команде используется pipe "|", который предназначен для группировки команд и передачи вывода одной команды на вход другой.*
 
 **Вывод в терминале:**
 
   ```bash
-find ~/boost_1_69_0 -type f | wc -l 
+$ find ~/boost_1_69_0 -type f | wc -l 
 61191
   ```
 
@@ -102,20 +124,20 @@ find ~/boost_1_69_0 -type f | wc -l
 **Решение в терминале:** 
 
 ```bash 
-find ~/boost_1_69_0 -type f \( -name "*.hpp" -o -name "*.h" \) | wc -l
-find ~/boost_1_69_0 -type f -name "*.cpp" | wc -l
-find ~/boost_1_69_0 -type f ! -name "*.hpp" ! -name "*.h" ! -name "*.cpp" | wc -l
+$ find ~/boost_1_69_0 -type f \( -name "*.hpp" -o -name "*.h" \) | wc -l
+$ find ~/boost_1_69_0 -type f -name "*.cpp" | wc -l
+$ find ~/boost_1_69_0 -type f ! -name "*.hpp" ! -name "*.h" ! -name "*.cpp" | wc -l
 ``` 
 *Примечание: \(...\) используется так, чтобы скобки объединяли условия, необходимо "экранировать" скобки. Знак "!" используется как стандартное отрицание (инверсия) условия.*
 
 **Вывод в терминале:**
 
   ```bash
-find ~/boost_1_69_0 -type f \( -name "*.hpp" -o -name "*.h" \) | wc -l
+$ find ~/boost_1_69_0 -type f \( -name "*.hpp" -o -name "*.h" \) | wc -l
 15208
-find ~/boost_1_69_0 -type f -name "*.cpp" | wc -l
+$ find ~/boost_1_69_0 -type f -name "*.cpp" | wc -l
 13774
-from1k@from1k-VirtualBox:~$ find ~/boost_1_69_0 -type f ! -name "*.hpp" ! -name "*.h" ! -name "*.cpp" | wc -l
+$ from1k@from1k-VirtualBox:~$ find ~/boost_1_69_0 -type f ! -name "*.hpp" ! -name "*.h" ! -name "*.cpp" | wc -l
 32209
   ```
 
@@ -124,7 +146,7 @@ from1k@from1k-VirtualBox:~$ find ~/boost_1_69_0 -type f ! -name "*.hpp" ! -name 
 **Решение в терминале:** 
 
 ```bash 
-find ~/boost_1_69_0 -type f -name "any.hpp"
+$ find ~/boost_1_69_0 -type f -name "any.hpp"
 ``` 
 
 **Вывод в терминале:**
@@ -149,19 +171,19 @@ find ~/boost_1_69_0 -type f -name "any.hpp"
 *Если нужно конкретно вывести все файлы в консоль:*
 
 ```bash 
-grep -rl "boost::asio" ~/boost_1_69_0
+$ grep -rl "boost::asio" ~/boost_1_69_0
 ```
 
 *Для удобства можно добавить:*
 
 ```bash 
-grep -rl "boost::asio" ~/boost_1_69_0 | less
+$ grep -rl "boost::asio" ~/boost_1_69_0 | less
 ```
 
 *Можно перенаправить вывод и записать данный результат в файл:*
 
 ```bash 
-grep -rl "boost::asio" ~/boost_1_69_0 > asio_files.txt
+$ grep -rl "boost::asio" ~/boost_1_69_0 > asio_files.txt
 ```
 
 *Примечание: ">" используется для перенаправления. Результат команды ```grep``` записывается в файл [asio_files.txt](/asio_files.txt)*
@@ -171,10 +193,42 @@ grep -rl "boost::asio" ~/boost_1_69_0 > asio_files.txt
 **Решение в терминале:** 
 
 ```bash 
-cd ~/boost_1_69_0
-~/boost_1_69_0$ ./bootstrap.sh
-./b2
+$ cd ~/boost_1_69_0
+$ ./bootstrap.sh
 ```
+
+**Вывод(1):** 
+
+```bash 
+Building Boost.Build engine with toolset gcc... tools/build/src/engine/bin.linuxx86_64/b2
+Unicode/ICU support for Boost.Regex?... not found.
+Backing up existing Boost.Build configuration in project-config.jam.1
+Generating Boost.Build configuration in project-config.jam...
+
+Bootstrapping is done. To build, run:
+
+    ./b2
+    
+To adjust configuration, edit 'project-config.jam'.
+Further information:
+
+   - Command line help:
+     ./b2 --help
+     
+   - Getting started guide: 
+     http://www.boost.org/more/getting_started/unix-variants.html
+     
+   - Boost.Build documentation:
+     http://www.boost.org/build/doc/html/index.html
+```
+
+```bash 
+$ ./b2
+```
+
+**Вывод(2):** 
+
+Вывод данного действия достаточно огромен, чтобы не вставлять его сюда целиком. Однако в случае возникновения проблем с компиляцией (или желания ознакомиться с данным выводом) для ознакомления прикрепляю файл [build.txt](/build.txt)
 
 *Примечание: если на стадии ```~/boost_1_69_0$ ./bootstrap.sh``` терминал выдает ошибку, тогда необходимо проверить наличие компилятора C++ (g++) и дркгих зависимостей*
 
